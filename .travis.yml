@@ -21,4 +21,9 @@ deploy:
   on:
     tags: true
 
-script: circuitpython-build-bundles --filename_prefix adafruit-circuitpython-dotstar --library_location .
+install:
+  - pip install pylint circuitpython-travis-build-tools
+
+script:
+  - pylint adafruit_dotstar.py
+  - circuitpython-build-bundles --filename_prefix adafruit-circuitpython-dotstar --library_location .
